@@ -10,13 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class MainActivity extends Activity{
 
-    private ViewPager viewPager;
+    public ViewPager viewPager;
     private View view1,view2,view3;
     private TextView txtView1;
     private TextView txtView2;
@@ -27,10 +28,14 @@ public class MainActivity extends Activity{
     private int count_right = 100;
     private int count_left = 98;
 
+
+    public AutoScrollHandler autoScrollHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        autoScrollHandler = new AutoScrollHandler(new WeakReference<MainActivity>(this));
         initViews();
     }
     public void initViews(){
@@ -101,5 +106,12 @@ public class MainActivity extends Activity{
                 }
             }
         });
+
+        //开始轮播效果
+        autoScrollHandler.sendEmptyMessageDelayed(AutoScrollHandler.MSG_UPDATE_IMAGE, AutoScrollHandler.MSG_DELAY);
     }
+
+
+
+
 }
