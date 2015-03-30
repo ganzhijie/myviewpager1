@@ -65,17 +65,33 @@ public class MainActivity extends Activity{
 
             @Override
             public void onPageScrollStateChanged(int state) {
+                //arg0表示滑动的状态，arg=0表示什么都没做，arg=1表示正在滑动，arg=2表示滑动结束
+//                /**
+//                 * Indicates that the pager is in an idle, settled state. The current page
+//                 * is fully in view and no animation is in progress.
+//                 */
+//                public static final int SCROLL_STATE_IDLE = 0;
+//
+//                /**
+//                 * Indicates that the pager is currently being dragged by the user.
+//                 */
+//                public static final int SCROLL_STATE_DRAGGING = 1;
+//
+//                /**
+//                 * Indicates that the pager is in the process of settling to a final position.
+//                 */
+//                public static final int SCROLL_STATE_SETTLING = 2;
                 switch (state) {
                     case ViewPager.SCROLL_STATE_DRAGGING:
                         Log.e("viewpager", " onPageScrollStateChanged " + state + "current_position: " + current_position);
-                        if(current_position == 2) {
-                            count_right++;
-                            txtView3.setText(Integer.toString(count_right));
-                        }
-                        else if(current_position == 0) {
-                            count_left--;
-                            txtView1.setText(Integer.toString(count_left));
-                        }
+//                        if(current_position == 2) {
+//                            count_right++;
+//                            txtView3.setText(Integer.toString(count_right));
+//                        }
+//                        else if(current_position == 0) {
+//                            count_left--;
+//                            txtView1.setText(Integer.toString(count_left));
+//                        }
                         break;
                     case ViewPager.SCROLL_STATE_IDLE:
                         Log.e("viewpager", " onPageScrollStateChanged " + state + "current_position: " + current_position);
