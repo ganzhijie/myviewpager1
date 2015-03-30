@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -14,6 +15,8 @@ import java.util.List;
 public class MyViewPagerAdapter extends PagerAdapter{
 
     private List<View> mListViews;
+
+    private TextView txtView;
 
     public MyViewPagerAdapter(List<View> listViews) {
         mListViews = listViews;
@@ -38,6 +41,7 @@ public class MyViewPagerAdapter extends PagerAdapter{
 //        container.addView(mListViews.get(position), 0);
 //        Log.e("tag", "instantiateItem " + position);
 //        return mListViews.get(position);
+        int current_position = position;
 
         //对ViewPager页号求模取出View列表中要显示的项
         position %= mListViews.size();
@@ -52,7 +56,19 @@ public class MyViewPagerAdapter extends PagerAdapter{
             parent.removeView(view);
         }
         container.addView(view);
-        //add listeners here if necessary
+
+        switch (position) {
+            case 0:
+                txtView = (TextView)view.findViewById(R.id.page1text);
+                break;
+            case 1:
+                txtView = (TextView)view.findViewById(R.id.page2text);
+                break;
+            case 2:
+                txtView = (TextView)view.findViewById(R.id.page3text);
+                break;
+        };
+        txtView.setText(Integer.toString(current_position));
         return view;
     }
 
@@ -60,6 +76,6 @@ public class MyViewPagerAdapter extends PagerAdapter{
     public void destroyItem(ViewGroup container, int position, Object object) {
         //Warning：不要在这里调用removeView
         //container.removeView(mListViews.get(position));
-        Log.e("tag", "destroyItem " + position + "getItemPosition:"+ super.getItemPosition(object));
+//        Log.e("tag", "destroyItem " + position + "getItemPosition:"+ super.getItemPosition(object));
     }
 }

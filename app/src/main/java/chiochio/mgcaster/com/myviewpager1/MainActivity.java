@@ -84,14 +84,14 @@ public class MainActivity extends Activity{
                 switch (state) {
                     case ViewPager.SCROLL_STATE_DRAGGING:
                         Log.e("viewpager", " onPageScrollStateChanged " + state + "current_position: " + current_position);
-//                        if(current_position == 2) {
-//                            count_right++;
+////                        if(current_position == 2) {
+////                            count_right++;
 //                            txtView3.setText(Integer.toString(count_right));
-//                        }
-//                        else if(current_position == 0) {
-//                            count_left--;
+////                        }
+////                        else if(current_position == 0) {
+////                            count_left--;
 //                            txtView1.setText(Integer.toString(count_left));
-//                        }
+////                        }
                         break;
                     case ViewPager.SCROLL_STATE_IDLE:
                         Log.e("viewpager", " onPageScrollStateChanged " + state + "current_position: " + current_position);
