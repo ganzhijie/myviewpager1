@@ -63,9 +63,11 @@ public class AutoScrollHandler extends Handler {
                 break;
             case MSG_KEEP_SILENT:
                 //只要不发送消息就暂停了
+                if (activity.autoScrollHandler.hasMessages(MSG_UPDATE_IMAGE)){
+                    activity.autoScrollHandler.removeMessages(MSG_UPDATE_IMAGE);
+                }
                 break;
             case MSG_BREAK_SILENT:
-                activity.autoScrollHandler.sendEmptyMessageDelayed(MSG_UPDATE_IMAGE, MSG_DELAY);
                 break;
             case MSG_PAGE_CHANGED:
                 //记录当前的页号，避免播放的时候页面显示不正确。
